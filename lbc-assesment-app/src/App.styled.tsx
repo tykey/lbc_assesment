@@ -10,6 +10,7 @@ export const AppContentWrapper = styled.div`
   max-width: ${FRAME_7_MAX_WIDTH};
   min-width: ${FRAME_7_MIN_WIDTH};
   margin: 0 auto;
+  flex-grow: 1;
 
   display: flex;
   flex-direction: column;

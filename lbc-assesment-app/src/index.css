@@ -4,7 +4,15 @@ body,
 #root {
   margin: 0;
   font-size: 14px;
+  min-height: 100vh;
   background-color: white;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 }
 
 html {

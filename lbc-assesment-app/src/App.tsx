@@ -3,6 +3,7 @@ import { HOME_PATH } from './constants/paths'
 import Homepage from './pages/Homepage'
 import { AppContentWrapper } from './App.styled'
 import Header from './shared/components/header/Header'
+import Footer from './shared/components/footer/Footer'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           <Route path={HOME_PATH} element={<Homepage />} />
           <Route path="/" element={<Navigate to={HOME_PATH} />} />
         </Routes>
+        <Footer />
       </AppContentWrapper>
     </BrowserRouter>
   )

@@ -21,5 +21,8 @@ export const pt = {
       creation_date_label: 'Data de criação',
       finished_data_label: 'Data de conclusão',
     },
+    footer: {
+      text: 'Exercício desenvolvido por: Tiago Costa',
+    },
   },
 }

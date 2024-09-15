@@ -14,6 +14,11 @@ import {
   GRAY_900,
 } from '../constants/colors'
 
+export const HomepageWrapper = styled.div`
+  width: 100%;
+  flex-grow: 1;
+`
+
 export const HomepageContentWrapper = styled.div`
   display: flex;
   flex-direction: column;

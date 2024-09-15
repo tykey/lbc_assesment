@@ -1,5 +1,6 @@
 import { Task } from '../constants/types'
 import AddTaskComponent from '../shared/components/addTask/AddTaskComponent'
+import Footer from '../shared/components/footer/Footer'
 import PaginationComponent from '../shared/components/pagination/PaginationComponent'
 import TasksList from '../shared/components/tasksList/TasksList'
 import { usePagination } from '../shared/hooks/usePagination'
@@ -9,6 +10,7 @@ import {
   HomepageContent,
   HomepageContentWrapper,
   HomepageHeader,
+  HomepageWrapper,
   MenuItemContainer,
   TotalTasksSpan,
 } from './Homepage.styled'
@@ -44,44 +46,46 @@ const Homepage = () => {
   }
 
   return (
-    <HomepageContentWrapper>
-      <HomepageHeader>
-        <span>{pt.pages.homepage.my_tasks}</span>
-      </HomepageHeader>
-      <HomepageContent>
-        <ContentMenu>
-          <MenuItemContainer>
-            <AddTaskComponent onAdd={onAddTask} />
-          </MenuItemContainer>
-          <MenuItemContainer>
-            <PaginationComponent
-              currPage={currPage}
-              numberOfPages={numberOfPages}
-              onClickNext={onClickNextPage}
-              onClickPrevious={onClickPreviousPage}
-              onPageChange={onPageChange}
-            />
-          </MenuItemContainer>
-        </ContentMenu>
-        <TasksList tasks={TEST_TASKS} />
-        <ContentMenu>
-          <MenuItemContainer>
-            <TotalTasksSpan>
-              {pt.pages.homepage.total_tasks(TEST_TASKS.length)}
-            </TotalTasksSpan>
-          </MenuItemContainer>
-          <MenuItemContainer>
-            <PaginationComponent
-              currPage={currPage}
-              numberOfPages={numberOfPages}
-              onClickNext={onClickNextPage}
-              onClickPrevious={onClickPreviousPage}
-              onPageChange={onPageChange}
-            />
-          </MenuItemContainer>
-        </ContentMenu>
-      </HomepageContent>
-    </HomepageContentWrapper>
+    <HomepageWrapper>
+      <HomepageContentWrapper>
+        <HomepageHeader>
+          <span>{pt.pages.homepage.my_tasks}</span>
+        </HomepageHeader>
+        <HomepageContent>
+          <ContentMenu>
+            <MenuItemContainer>
+              <AddTaskComponent onAdd={onAddTask} />
+            </MenuItemContainer>
+            <MenuItemContainer>
+              <PaginationComponent
+                currPage={currPage}
+                numberOfPages={numberOfPages}
+                onClickNext={onClickNextPage}
+                onClickPrevious={onClickPreviousPage}
+                onPageChange={onPageChange}
+              />
+            </MenuItemContainer>
+          </ContentMenu>
+          <TasksList tasks={TEST_TASKS} />
+          <ContentMenu>
+            <MenuItemContainer>
+              <TotalTasksSpan>
+                {pt.pages.homepage.total_tasks(TEST_TASKS.length)}
+              </TotalTasksSpan>
+            </MenuItemContainer>
+            <MenuItemContainer>
+              <PaginationComponent
+                currPage={currPage}
+                numberOfPages={numberOfPages}
+                onClickNext={onClickNextPage}
+                onClickPrevious={onClickPreviousPage}
+                onPageChange={onPageChange}
+              />
+            </MenuItemContainer>
+          </ContentMenu>
+        </HomepageContent>
+      </HomepageContentWrapper>
+    </HomepageWrapper>
   )
 }
 

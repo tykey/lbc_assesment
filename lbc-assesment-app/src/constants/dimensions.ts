@@ -22,3 +22,9 @@ export const ADD_TASK_INPUT_CONTAINER_GAP = '6px'
 /* PAGINATION */
 export const PAGINATION_WRAPPER_GAP = '16px'
 export const PAGINATION_BUTTONS_GAP = '4px'
+
+/* FOOTER */
+/* HEADER */
+export const FOOTER_PADDING_VERTICAL = '48px'
+export const FOOTER_LOGO_HEIGHT = '32px'
+export const FOOTER_LOGO_WIDTH = '169px'
