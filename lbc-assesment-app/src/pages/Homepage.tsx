@@ -1,4 +1,6 @@
 import AddTaskComponent from '../shared/components/addTask/AddTaskComponent'
+import PaginationComponent from '../shared/components/pagination/PaginationComponent'
+import TasksList from '../shared/components/tasksList/TasksList'
 import { pt } from '../shared/translations/pt'
 import {
   ContentMenu,
@@ -23,7 +25,15 @@ const Homepage = () => {
           <MenuItemContainer>
             <AddTaskComponent onAdd={onAddTask} />
           </MenuItemContainer>
+          <MenuItemContainer>
+            <PaginationComponent
+              maxItems={12}
+              pageSize={10}
+              onPageChange={() => {}}
+            />
+          </MenuItemContainer>
         </ContentMenu>
+        <TasksList />
       </HomepageContent>
     </HomepageContentWrapper>
   )

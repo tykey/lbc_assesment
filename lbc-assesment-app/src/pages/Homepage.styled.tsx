@@ -6,7 +6,7 @@ import {
   FRAME_9_GAP,
   FRAME_9_PADDING,
 } from '../constants/dimensions'
-import { GRAY_100, GRAY_400, GRAY_900 } from '../constants/colors'
+import { GRAY_100, GRAY_300, GRAY_400, GRAY_900 } from '../constants/colors'
 
 export const HomepageContentWrapper = styled.div`
   display: flex;
@@ -44,7 +44,7 @@ export const ContentMenu = styled.div`
   width: 100%;
   display: flex;
   justify-content: start;
-  align-items: start;
+  align-items: end;
   gap: ${FRAME_6_GAP};
 `
 

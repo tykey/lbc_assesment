@@ -18,3 +18,7 @@ export const FRAME_6_GAP = '48px'
 /* ADD TASK */
 export const ADD_TASK_WRAPPER_GAP = '8px'
 export const ADD_TASK_INPUT_CONTAINER_GAP = '6px'
+
+/* PAGINATION */
+export const PAGINATION_WRAPPER_GAP = '16px'
+export const PAGINATION_BUTTONS_GAP = '4px'
