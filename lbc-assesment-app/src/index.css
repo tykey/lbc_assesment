@@ -2,9 +2,11 @@ body,
 #root {
   margin: 0;
   font-size: 14px;
+  background-color: white;
 }
 
 html {
+  width: 100vw;
   overflow-x: hidden;
 }
 
