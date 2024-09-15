@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from 'react'
 import { Task } from '../../../constants/types'
 import { pt } from '../../translations/pt'
 import {
+  RemoveButton,
   TaskDescription,
   TasksListHeader,
   TasksListHeaderLabel,
@@ -11,9 +12,10 @@ import {
 
 type TasksListProps = {
   tasks: Task[]
+  onRemoveTask: (taskIndex: number) => void
 }
 
-const TasksList = ({ tasks }: TasksListProps) => {
+const TasksList = ({ tasks, onRemoveTask }: TasksListProps) => {
   const [isTaskSelected, setIsTaskSelected] = useState<boolean[]>(
     [...new Array(tasks.length)].map((_elem: any) => false)
   )
@@ -29,20 +31,25 @@ const TasksList = ({ tasks }: TasksListProps) => {
   return (
     <TasksListWrapper>
       <TasksListHeader>
-        <TasksListHeaderLabel flex={2}>
+        <TasksListHeaderLabel flex={3}>
           {pt.components.tasks_list.task_label}
         </TasksListHeaderLabel>
-        <TasksListHeaderLabel flex={1}>
+        <TasksListHeaderLabel flex={2}>
           {pt.components.tasks_list.creation_date_label}
         </TasksListHeaderLabel>
-        <TasksListHeaderLabel flex={1}>
+        <TasksListHeaderLabel flex={2}>
           {pt.components.tasks_list.finished_data_label}
         </TasksListHeaderLabel>
+        <TaskDescription flex={1}>
+          <RemoveButton isHidden>
+            {pt.components.tasks_list.remove_button_text}
+          </RemoveButton>
+        </TaskDescription>
       </TasksListHeader>
       {tasks.map((task: Task, taskIndex: number) => {
         return (
           <TaskWrapper key={`task_${taskIndex}`}>
-            <TaskDescription flex={2}>
+            <TaskDescription flex={3}>
               <input
                 type="checkbox"
                 checked={isTaskSelected[taskIndex]}
@@ -52,11 +59,16 @@ const TasksList = ({ tasks }: TasksListProps) => {
               />
               <span>{task.description}</span>
             </TaskDescription>
-            <TaskDescription flex={1}>
+            <TaskDescription flex={2}>
               {task.creationDate.toDateString()}
             </TaskDescription>
-            <TaskDescription flex={1}>
+            <TaskDescription flex={2}>
               {task.finishedDate ? task.finishedDate.toDateString() : '-'}
+            </TaskDescription>
+            <TaskDescription flex={1}>
+              <RemoveButton onClick={() => onRemoveTask(taskIndex)}>
+                {pt.components.tasks_list.remove_button_text}
+              </RemoveButton>
             </TaskDescription>
           </TaskWrapper>
         )

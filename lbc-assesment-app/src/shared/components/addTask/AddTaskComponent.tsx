@@ -1,6 +1,7 @@
 import { memo, useCallback, useState } from 'react'
 import {
-  AddTaskInputContainer,
+  AddTaskBottom,
+  AddTaskInput,
   AddTaskWrapper,
 } from './AddTaskComponent.styled'
 import { pt } from '../../translations/pt'
@@ -23,14 +24,14 @@ const AddTaskComponent = ({ onAdd }: AddTaskComponentProps) => {
 
   return (
     <AddTaskWrapper>
-      <AddTaskInputContainer>
-        <span>{pt.components.add_task.title}</span>
-        <input type="text" onChange={onChangeInput} value={input} />
-      </AddTaskInputContainer>
-      <DefaultButton
-        onClick={onAddTask}
-        text={pt.components.add_task.add_button}
-      />
+      <span>{pt.components.add_task.title}</span>
+      <AddTaskBottom>
+        <AddTaskInput type="text" onChange={onChangeInput} value={input} />
+        <DefaultButton
+          onClick={onAddTask}
+          text={pt.components.add_task.add_button}
+        />
+      </AddTaskBottom>
     </AddTaskWrapper>
   )
 }

@@ -56,7 +56,7 @@ const Homepage = () => {
             <MenuItemContainer>
               <AddTaskComponent onAdd={onAddTask} />
             </MenuItemContainer>
-            <MenuItemContainer>
+            <MenuItemContainer flexGrow={0}>
               <PaginationComponent
                 currPage={currPage}
                 numberOfPages={numberOfPages}
@@ -66,7 +66,10 @@ const Homepage = () => {
               />
             </MenuItemContainer>
           </ContentMenu>
-          <TasksList tasks={TEST_TASKS} />
+          <TasksList
+            tasks={TEST_TASKS}
+            onRemoveTask={() => alert('not yet implemented')}
+          />
           <ContentMenu>
             <MenuItemContainer>
               <TotalTasksSpan>

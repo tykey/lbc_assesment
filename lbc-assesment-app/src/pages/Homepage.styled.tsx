@@ -59,8 +59,12 @@ export const ContentMenu = styled.div`
   gap: ${FRAME_6_GAP};
 `
 
-export const MenuItemContainer = styled.div`
-  flex: 1 1 auto;
+type MenuItemContainerProps = {
+  flexGrow?: number
+}
+
+export const MenuItemContainer = styled.div<MenuItemContainerProps>`
+  flex: ${(props) => props.flexGrow ?? 1} 1 auto;
 `
 
 export const TotalTasksSpan = styled.span`

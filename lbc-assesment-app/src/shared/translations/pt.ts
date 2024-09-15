@@ -20,6 +20,7 @@ export const pt = {
       task_label: 'Tarefa',
       creation_date_label: 'Data de criação',
       finished_data_label: 'Data de conclusão',
+      remove_button_text: 'Excluir',
     },
     footer: {
       text: 'Exercício desenvolvido por: Tiago Costa',

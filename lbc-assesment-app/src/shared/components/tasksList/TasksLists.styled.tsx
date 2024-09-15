@@ -1,5 +1,12 @@
 import styled from '@emotion/styled'
-import { GRAY_300, GRAY_800, GRAY_900 } from '../../../constants/colors'
+import {
+  DANGER_COLOR,
+  GRAY_300,
+  GRAY_800,
+  GRAY_900,
+  RED_100,
+  RED_700,
+} from '../../../constants/colors'
 
 export const TasksListWrapper = styled.div`
   display: flex;
@@ -63,4 +70,28 @@ export const TaskDescription = styled.div<TasksListHeaderLabelProps>`
   overflow: hidden;
 
   flex: ${(props) => props.flex};
+`
+
+type RemoveButtonProps = {
+  isHidden?: boolean
+}
+
+export const RemoveButton = styled.button<RemoveButtonProps>`
+  background-color: ${RED_100};
+  border: solid 1px transparent;
+  border-radius: 6px;
+  cursor: ${(props) => (props.isHidden ? 'default' : 'pointer')};
+  padding: 10px 16px;
+  transition: border 0.1s ease-out;
+  opacity: ${(props) => (props.isHidden ? 0 : 1)};
+  pointer-events: ${(props) => (props.isHidden ? 'none' : 'all')};
+
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: ${RED_700};
+
+  &:hover {
+    border: solid 1px ${RED_700};
+  }
 `
