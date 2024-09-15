@@ -19,7 +19,9 @@ import {
 const TEST_PAGE_SIZE = 5
 
 const Homepage = () => {
-  const { tasks, onAddTask, onRemoveTask } = useTasks([])
+  const { tasks, onAddTask, onRemoveTask } = useTasks()
+
+  console.log('tasks', tasks)
 
   const {
     currPage,

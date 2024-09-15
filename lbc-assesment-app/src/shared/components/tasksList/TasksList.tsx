@@ -60,10 +60,12 @@ const TasksList = ({ tasks, onRemoveTask }: TasksListProps) => {
               <span>{task.description}</span>
             </TaskDescription>
             <TaskDescription flex={2}>
-              {task.creationDate.toDateString()}
+              {new Date(task.creationDate).toLocaleDateString()}
             </TaskDescription>
             <TaskDescription flex={2}>
-              {task.finishedDate ? task.finishedDate.toDateString() : '-'}
+              {task.finishedDate
+                ? new Date(task.finishedDate).toLocaleDateString()
+                : '-'}
             </TaskDescription>
             <TaskDescription flex={1}>
               <RemoveButton onClick={() => onRemoveTask(taskIndex)}>
