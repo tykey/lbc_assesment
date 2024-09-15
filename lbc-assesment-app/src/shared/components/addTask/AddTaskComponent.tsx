@@ -19,7 +19,10 @@ const AddTaskComponent = ({ onAdd }: AddTaskComponentProps) => {
   }, [])
 
   const onAddTask = () => {
-    if (input.length > 0) onAdd(input)
+    if (input.length > 0) {
+      onAdd(input)
+      setInput('')
+    }
   }
 
   return (
@@ -30,6 +33,7 @@ const AddTaskComponent = ({ onAdd }: AddTaskComponentProps) => {
         <DefaultButton
           onClick={onAddTask}
           text={pt.components.add_task.add_button}
+          isDisabled={input === ''}
         />
       </AddTaskBottom>
     </AddTaskWrapper>

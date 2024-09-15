@@ -4,10 +4,15 @@ import { DefaultButtonStyled } from './DefaultButton.styled'
 type DefaultButtonProps = {
   text: string
   onClick: () => void
+  isDisabled?: boolean
 }
 
-const DefaultButton = ({ text, onClick }: DefaultButtonProps) => {
-  return <DefaultButtonStyled onClick={onClick}>{text}</DefaultButtonStyled>
+const DefaultButton = ({ text, onClick, isDisabled }: DefaultButtonProps) => {
+  return (
+    <DefaultButtonStyled onClick={onClick} isDisabled={isDisabled}>
+      {text}
+    </DefaultButtonStyled>
+  )
 }
 
 export default memo(DefaultButton)

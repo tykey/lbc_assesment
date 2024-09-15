@@ -4,6 +4,7 @@ import Footer from '../shared/components/footer/Footer'
 import PaginationComponent from '../shared/components/pagination/PaginationComponent'
 import TasksList from '../shared/components/tasksList/TasksList'
 import { usePagination } from '../shared/hooks/usePagination'
+import { useTasks } from '../shared/hooks/useTasks'
 import { pt } from '../shared/translations/pt'
 import {
   ContentMenu,
@@ -15,35 +16,18 @@ import {
   TotalTasksSpan,
 } from './Homepage.styled'
 
-const TEST_TASKS: Task[] = [
-  {
-    description: 'Falar com o Filipe Zuzarte',
-    creationDate: new Date(),
-  },
-  {
-    description: 'Fazer deploy do projeto',
-    creationDate: new Date(),
-  },
-  {
-    description: 'Fazer a folha de horas',
-    creationDate: new Date(),
-  },
-]
-
-const TEST_PAGE_SIZE = 2
+const TEST_PAGE_SIZE = 5
 
 const Homepage = () => {
+  const { tasks, onAddTask, onRemoveTask } = useTasks([])
+
   const {
     currPage,
     numberOfPages,
     onClickPreviousPage,
     onClickNextPage,
     onPageChange,
-  } = usePagination(TEST_TASKS.length, TEST_PAGE_SIZE)
-
-  const onAddTask = (task: string) => {
-    alert(`add task ${task}`)
-  }
+  } = usePagination(tasks.length, TEST_PAGE_SIZE)
 
   return (
     <HomepageWrapper>
@@ -66,14 +50,11 @@ const Homepage = () => {
               />
             </MenuItemContainer>
           </ContentMenu>
-          <TasksList
-            tasks={TEST_TASKS}
-            onRemoveTask={() => alert('not yet implemented')}
-          />
+          <TasksList tasks={tasks} onRemoveTask={onRemoveTask} />
           <ContentMenu>
             <MenuItemContainer>
               <TotalTasksSpan>
-                {pt.pages.homepage.total_tasks(TEST_TASKS.length)}
+                {pt.pages.homepage.total_tasks(tasks.length)}
               </TotalTasksSpan>
             </MenuItemContainer>
             <MenuItemContainer>
