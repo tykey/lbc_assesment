@@ -11,8 +11,15 @@ export const GRAY_900 = '#212529'
 
 /* RED */
 export const RED_100 = '#F8D7DA'
+export const RED_400 = '#E35D6A'
 export const RED_700 = '#842029'
+
+/* GREEN */
+export const GREEN_300 = '#75B798'
+export const GREEN_500 = '#198754'
 
 export const PRIMARY_COLOR = '#067B95'
 export const PRIMARY_COLOR_DARK = '#004555'
 export const DANGER_COLOR = '#DC3545'
+export const SUCCESS_COLOR = '#28A745'
+export const LIGHT_COLOR = '#EBE5FC'

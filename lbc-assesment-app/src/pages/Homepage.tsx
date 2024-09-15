@@ -1,4 +1,6 @@
-import { Task } from '../constants/types'
+import { useContext } from 'react'
+import { ToastContext } from '../App'
+import { Task, ToastType } from '../constants/types'
 import AddTaskComponent from '../shared/components/addTask/AddTaskComponent'
 import Footer from '../shared/components/footer/Footer'
 import PaginationComponent from '../shared/components/pagination/PaginationComponent'
@@ -19,9 +21,9 @@ import {
 const TEST_PAGE_SIZE = 5
 
 const Homepage = () => {
-  const { tasks, onAddTask, onRemoveTask } = useTasks()
+  const toast = useContext(ToastContext)
 
-  console.log('tasks', tasks)
+  const { tasks, onAddTask, onRemoveTask } = useTasks()
 
   const {
     currPage,
@@ -30,6 +32,16 @@ const Homepage = () => {
     onClickNextPage,
     onPageChange,
   } = usePagination(tasks.length, TEST_PAGE_SIZE)
+
+  const addTaskCallback = (taskDescription: string) => {
+    onAddTask(taskDescription)
+    toast.show(ToastType.Success, pt.pages.homepage.add_success, 4)
+  }
+
+  const removeTaskCallback = (taskIndex: number) => {
+    onRemoveTask(taskIndex)
+    toast.show(ToastType.Success, pt.pages.homepage.remove_success, 4)
+  }
 
   return (
     <HomepageWrapper>
@@ -40,9 +52,9 @@ const Homepage = () => {
         <HomepageContent>
           <ContentMenu>
             <MenuItemContainer>
-              <AddTaskComponent onAdd={onAddTask} />
+              <AddTaskComponent onAdd={addTaskCallback} />
             </MenuItemContainer>
-            <MenuItemContainer flexGrow={0}>
+            <MenuItemContainer flexGrow={0} isHidden={numberOfPages === 0}>
               <PaginationComponent
                 currPage={currPage}
                 numberOfPages={numberOfPages}
@@ -52,14 +64,14 @@ const Homepage = () => {
               />
             </MenuItemContainer>
           </ContentMenu>
-          <TasksList tasks={tasks} onRemoveTask={onRemoveTask} />
+          <TasksList tasks={tasks} onRemoveTask={removeTaskCallback} />
           <ContentMenu>
             <MenuItemContainer>
               <TotalTasksSpan>
                 {pt.pages.homepage.total_tasks(tasks.length)}
               </TotalTasksSpan>
             </MenuItemContainer>
-            <MenuItemContainer>
+            <MenuItemContainer isHidden={numberOfPages === 0}>
               <PaginationComponent
                 currPage={currPage}
                 numberOfPages={numberOfPages}

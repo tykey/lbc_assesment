@@ -61,10 +61,13 @@ export const ContentMenu = styled.div`
 
 type MenuItemContainerProps = {
   flexGrow?: number
+  isHidden?: boolean
 }
 
 export const MenuItemContainer = styled.div<MenuItemContainerProps>`
   flex: ${(props) => props.flexGrow ?? 1} 1 auto;
+  opacity: ${(props) => (props.isHidden ? 0 : 1)};
+  pointer-events: ${(props) => (props.isHidden ? 'none' : 'all')};
 `
 
 export const TotalTasksSpan = styled.span`

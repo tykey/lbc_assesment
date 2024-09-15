@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import {
   DANGER_COLOR,
   GRAY_300,
+  GRAY_500,
   GRAY_800,
   GRAY_900,
   RED_100,
@@ -94,4 +95,14 @@ export const RemoveButton = styled.button<RemoveButtonProps>`
   &:hover {
     border: solid 1px ${RED_700};
   }
+`
+
+export const NoResultsSpan = styled.span`
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: ${GRAY_800};
+  margin-top: 25px;
+  width: 100%;
+  text-align: center;
 `

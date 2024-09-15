@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from 'react'
 import { Task } from '../../../constants/types'
 import { pt } from '../../translations/pt'
 import {
+  NoResultsSpan,
   RemoveButton,
   TaskDescription,
   TasksListHeader,
@@ -75,6 +76,9 @@ const TasksList = ({ tasks, onRemoveTask }: TasksListProps) => {
           </TaskWrapper>
         )
       })}
+      {tasks.length === 0 && (
+        <NoResultsSpan>{pt.components.tasks_list.no_results}</NoResultsSpan>
+      )}
     </TasksListWrapper>
   )
 }
