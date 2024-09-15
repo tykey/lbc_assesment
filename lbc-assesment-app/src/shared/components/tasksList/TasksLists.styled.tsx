@@ -49,6 +49,12 @@ export const TaskWrapper = styled.div`
 `
 
 export const TaskDescription = styled.div<TasksListHeaderLabelProps>`
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 2px;
+
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 28px;
