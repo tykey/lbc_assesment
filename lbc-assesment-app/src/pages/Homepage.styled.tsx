@@ -6,7 +6,13 @@ import {
   FRAME_9_GAP,
   FRAME_9_PADDING,
 } from '../constants/dimensions'
-import { GRAY_100, GRAY_300, GRAY_400, GRAY_900 } from '../constants/colors'
+import {
+  GRAY_100,
+  GRAY_300,
+  GRAY_400,
+  GRAY_700,
+  GRAY_900,
+} from '../constants/colors'
 
 export const HomepageContentWrapper = styled.div`
   display: flex;
@@ -50,4 +56,11 @@ export const ContentMenu = styled.div`
 
 export const MenuItemContainer = styled.div`
   flex: 1 1 auto;
+`
+
+export const TotalTasksSpan = styled.span`
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: ${GRAY_700};
 `

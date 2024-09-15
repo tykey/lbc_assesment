@@ -2,6 +2,7 @@ export const pt = {
   pages: {
     homepage: {
       my_tasks: 'As minhas tarefas',
+      total_tasks: (totalTasks: number) => `Total de tarefas: ${totalTasks}`,
     },
   },
   components: {

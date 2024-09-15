@@ -11,35 +11,23 @@ import { GRAY_700 } from '../../../constants/colors'
 import { pt } from '../../translations/pt'
 
 type PaginationComponentProps = {
-  pageSize: number
-  maxItems: number
+  numberOfPages: number
+  currPage: number
+  onClickPrevious: () => void
+  onClickNext: () => void
   onPageChange: (page: number) => void
 }
 
 const PaginationComponent = ({
-  pageSize,
-  maxItems,
+  numberOfPages,
+  currPage,
+  onClickPrevious,
+  onClickNext,
   onPageChange,
 }: PaginationComponentProps) => {
-  const numberOfPages = Math.ceil(maxItems / pageSize)
-
-  const [currPage, setCurrPage] = useState<number>(1)
-
-  const onClickPrevious = () => {
-    setCurrPage((prev) => Math.max(prev - 1, 1))
-  }
-
-  const onClickNext = () => {
-    setCurrPage((prev) => Math.min(prev + 1, numberOfPages))
-  }
-
   const onChangeSelect = useCallback((event: any) => {
-    setCurrPage(event.target.value)
+    onPageChange(event.target.value)
   }, [])
-
-  useEffect(() => {
-    onPageChange(currPage)
-  }, [currPage])
 
   return (
     <PaginationWrapper>

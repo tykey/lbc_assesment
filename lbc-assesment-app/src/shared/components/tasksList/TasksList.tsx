@@ -8,22 +8,11 @@ import {
   TaskWrapper,
 } from './TasksLists.styled'
 
-const TEST_TASKS: Task[] = [
-  {
-    description: 'Falar com o Filipe Zuzarte',
-    creationDate: new Date(),
-  },
-  {
-    description: 'Fazer deploy do projeto',
-    creationDate: new Date(),
-  },
-  {
-    description: 'Fazer a folha de horas',
-    creationDate: new Date(),
-  },
-]
+type TasksListProps = {
+  tasks: Task[]
+}
 
-const TasksList = () => {
+const TasksList = ({ tasks }: TasksListProps) => {
   return (
     <TasksListWrapper>
       <TasksListHeader>
@@ -37,7 +26,7 @@ const TasksList = () => {
           {pt.components.tasks_list.finished_data_label}
         </TasksListHeaderLabel>
       </TasksListHeader>
-      {TEST_TASKS.map((task: Task, taskIndex: number) => {
+      {tasks.map((task: Task, taskIndex: number) => {
         return (
           <TaskWrapper key={`task_${taskIndex}`}>
             <TaskDescription flex={2}>{task.description}</TaskDescription>
