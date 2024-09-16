@@ -16,6 +16,7 @@ import { toggleFinishedTask } from '../../slices/tasksSlice'
 import { PRIMARY_COLOR } from '../../../constants/colors'
 import { ToastContext } from '../../../App'
 import { ToastType } from '../toast/Toast'
+import { formatDate } from '../../../constants/util'
 
 type TasksListProps = {
   tasks: Task[]
@@ -82,11 +83,11 @@ const TasksList = ({ tasks, onRemoveTask }: TasksListProps) => {
               </FinishedDiv>
             </TaskDescription>
             <TaskDescription flex={2}>
-              {new Date(task.creationDate).toLocaleDateString()}
+              {formatDate(new Date(task.creationDate))}
             </TaskDescription>
             <TaskDescription flex={2}>
               {task.finishedDate
-                ? new Date(task.finishedDate).toLocaleDateString()
+                ? formatDate(new Date(task.finishedDate))
                 : '-'}
             </TaskDescription>
             <TaskDescription flex={1}>

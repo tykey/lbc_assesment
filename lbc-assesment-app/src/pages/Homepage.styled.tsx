@@ -51,12 +51,17 @@ export const HomepageContent = styled.div`
   gap: ${FRAME_15_GAP};
 `
 
-export const ContentMenu = styled.div`
+type ContentMenuProps = {
+  flexWrap: string
+}
+
+export const ContentMenu = styled.div<ContentMenuProps>`
   width: 100%;
   display: flex;
   justify-content: start;
   align-items: end;
   gap: ${FRAME_6_GAP};
+  flex-wrap: ${(props) => props.flexWrap};
 `
 
 type MenuItemContainerProps = {

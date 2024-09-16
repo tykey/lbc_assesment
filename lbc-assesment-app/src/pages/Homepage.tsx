@@ -50,7 +50,7 @@ const Homepage = () => {
           <span>{pt.pages.homepage.my_tasks}</span>
         </HomepageHeader>
         <HomepageContent>
-          <ContentMenu>
+          <ContentMenu key="menu1" flexWrap="wrap">
             <MenuItemContainer>
               <AddTaskComponent onAdd={addTaskCallback} />
             </MenuItemContainer>
@@ -65,7 +65,7 @@ const Homepage = () => {
             </MenuItemContainer>
           </ContentMenu>
           <TasksList tasks={tasks} onRemoveTask={removeTaskCallback} />
-          <ContentMenu>
+          <ContentMenu key="menu2" flexWrap="wrap-reverse">
             <MenuItemContainer>
               <TotalTasksSpan>
                 {pt.pages.homepage.total_tasks(tasks.length)}
