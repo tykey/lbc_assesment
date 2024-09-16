@@ -7,6 +7,7 @@ import {
   GRAY_900,
   RED_100,
   RED_700,
+  SUCCESS_COLOR,
 } from '../../../constants/colors'
 
 export const TasksListWrapper = styled.div`
@@ -105,4 +106,24 @@ export const NoResultsSpan = styled.span`
   margin-top: 25px;
   width: 100%;
   text-align: center;
+`
+
+type FinishedDivProps = {
+  isFinished: boolean
+}
+
+export const FinishedDiv = styled.div<FinishedDivProps>`
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  line-height: 12.1px;
+  font-weight: 600;
+  color: white;
+
+  padding: 4px 8px;
+  background-color: ${SUCCESS_COLOR};
+  border-radius: 12px;
+
+  transition: all 0.15s ease-out;
+  opacity: ${(props) => (props.isFinished ? 1 : 0)};
+  margin-left: 10px;
 `

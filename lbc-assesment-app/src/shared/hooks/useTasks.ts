@@ -13,6 +13,7 @@ export function useTasks() {
     const newTask: Task = {
       description: taskDescription,
       creationDate: new Date(),
+      isFinished: false,
     }
 
     dispatch(addTask(newTask))

@@ -1,6 +1,7 @@
 export type Task = {
   description: string
   creationDate: Date
+  isFinished: boolean
   finishedDate?: Date
 }
 

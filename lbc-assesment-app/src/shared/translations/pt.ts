@@ -24,6 +24,8 @@ export const pt = {
       finished_data_label: 'Data de conclusão',
       remove_button_text: 'Excluir',
       no_results: 'Ainda não adicionou nenhuma tarefa!',
+      finished_task: 'Concluída',
+      finished_success: 'Tarefa concluída',
     },
     footer: {
       text: 'Exercício desenvolvido por: Tiago Costa',

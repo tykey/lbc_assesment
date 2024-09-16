@@ -18,6 +18,10 @@ const AddTaskComponent = ({ onAdd }: AddTaskComponentProps) => {
     setInput(e.target.value)
   }, [])
 
+  const handleKeyDown = (e: any) => {
+    if (e.key === 'Enter' && input !== '') onAddTask()
+  }
+
   const onAddTask = () => {
     if (input.length > 0) {
       onAdd(input)
@@ -29,7 +33,12 @@ const AddTaskComponent = ({ onAdd }: AddTaskComponentProps) => {
     <AddTaskWrapper>
       <span>{pt.components.add_task.title}</span>
       <AddTaskBottom>
-        <AddTaskInput type="text" onChange={onChangeInput} value={input} />
+        <AddTaskInput
+          type="text"
+          onChange={onChangeInput}
+          value={input}
+          onKeyDown={handleKeyDown}
+        />
         <DefaultButton
           onClick={onAddTask}
           text={pt.components.add_task.add_button}

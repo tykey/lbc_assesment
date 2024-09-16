@@ -1,7 +1,8 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
 import { Task } from '../../../constants/types'
 import { pt } from '../../translations/pt'
 import {
+  FinishedDiv,
   NoResultsSpan,
   RemoveButton,
   TaskDescription,
@@ -10,6 +11,11 @@ import {
   TasksListWrapper,
   TaskWrapper,
 } from './TasksLists.styled'
+import { useDispatch } from 'react-redux'
+import { toggleFinishedTask } from '../../slices/tasksSlice'
+import { PRIMARY_COLOR } from '../../../constants/colors'
+import { ToastContext } from '../../../App'
+import { ToastType } from '../toast/Toast'
 
 type TasksListProps = {
   tasks: Task[]
@@ -17,16 +23,21 @@ type TasksListProps = {
 }
 
 const TasksList = ({ tasks, onRemoveTask }: TasksListProps) => {
-  const [isTaskSelected, setIsTaskSelected] = useState<boolean[]>(
-    [...new Array(tasks.length)].map((_elem: any) => false)
-  )
+  const dispatch = useDispatch()
+  const toast = useContext(ToastContext)
 
-  const onChangeSelectedTask = (taskIndex: number, isSelected: boolean) => {
-    setIsTaskSelected((prev) => [
-      ...prev.slice(0, taskIndex),
-      isSelected,
-      ...prev.slice(taskIndex + 1),
-    ])
+  const toggleIsFinished = (
+    taskIndex: number,
+    isCurrentlyFinished: boolean
+  ) => {
+    dispatch(toggleFinishedTask(taskIndex))
+
+    if (isCurrentlyFinished)
+      toast.show(
+        ToastType.Success,
+        pt.components.tasks_list.finished_success,
+        4
+      )
   }
 
   return (
@@ -53,12 +64,22 @@ const TasksList = ({ tasks, onRemoveTask }: TasksListProps) => {
             <TaskDescription flex={3}>
               <input
                 type="checkbox"
-                checked={isTaskSelected[taskIndex]}
+                checked={task.isFinished}
                 onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                  onChangeSelectedTask(taskIndex, event.target.checked)
+                  toggleIsFinished(taskIndex, event.target.checked)
                 }
+                style={{ accentColor: PRIMARY_COLOR }}
               />
-              <span>{task.description}</span>
+              <span
+                style={{
+                  textDecoration: task.isFinished ? 'line-through' : 'none',
+                }}
+              >
+                {task.description}
+              </span>
+              <FinishedDiv isFinished={task.isFinished}>
+                {pt.components.tasks_list.finished_task}
+              </FinishedDiv>
             </TaskDescription>
             <TaskDescription flex={2}>
               {new Date(task.creationDate).toLocaleDateString()}
