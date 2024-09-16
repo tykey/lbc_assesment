@@ -18,7 +18,7 @@ import {
   TotalTasksSpan,
 } from './Homepage.styled'
 
-const TEST_PAGE_SIZE = 5
+const PAGE_SIZE = 5
 
 const Homepage = () => {
   const toast = useContext(ToastContext)
@@ -31,7 +31,7 @@ const Homepage = () => {
     onClickPreviousPage,
     onClickNextPage,
     onPageChange,
-  } = usePagination(tasks.length, TEST_PAGE_SIZE)
+  } = usePagination(tasks.length, PAGE_SIZE)
 
   const addTaskCallback = (taskDescription: string) => {
     onAddTask(taskDescription)

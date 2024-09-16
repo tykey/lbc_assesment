@@ -35,11 +35,19 @@ const PaginationComponent = ({
         {pt.components.pagination.page_info(currPage, numberOfPages)}
       </BodyText>
       <PaginationButtonsContainer>
-        <NavigationButton onClick={onClickPrevious}>
+        <NavigationButton
+          key="previous_button"
+          onClick={onClickPrevious}
+          isDisabled={currPage === 1}
+        >
           {pt.components.pagination.previous_page}
         </NavigationButton>
         <CurrPageContainer>{currPage}</CurrPageContainer>
-        <NavigationButton onClick={onClickNext}>
+        <NavigationButton
+          key="next_button"
+          onClick={onClickNext}
+          isDisabled={currPage === numberOfPages}
+        >
           {pt.components.pagination.next_page}
         </NavigationButton>
         <PaginationSelect value={currPage} onChange={onChangeSelect}>

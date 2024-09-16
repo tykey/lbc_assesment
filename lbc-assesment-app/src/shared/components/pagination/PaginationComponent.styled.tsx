@@ -25,13 +25,17 @@ export const PaginationButtonsContainer = styled.div`
   gap: ${PAGINATION_BUTTONS_GAP};
 `
 
-export const NavigationButton = styled.button`
+type NavigationButtonProps = {
+  isDisabled?: boolean
+}
+
+export const NavigationButton = styled.button<NavigationButtonProps>`
   border: none;
   background-color: white;
   color: white;
   border: solid 1px ${GRAY_200};
   border-radius: 6px;
-  cursor: pointer;
+  cursor: ${(props) => (props.isDisabled ? 'default' : 'pointer')};
   padding: 12px 16px;
   transition: all 0.1s ease-out;
 
@@ -42,7 +46,7 @@ export const NavigationButton = styled.button`
   color: ${GRAY_500};
 
   &:hover {
-    border: solid 1px ${GRAY_500};
+    ${(props) => (!props.isDisabled ? 'border: solid 1px ${GRAY_500};' : '')}
   }
 `
 
